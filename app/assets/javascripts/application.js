@@ -95,12 +95,6 @@
               photo: x.picture.data.url
             }
           });
-          // pic = 'http://graph.facebook.com/lawrence.whiteside/picture?type=normal';
-          // var params = [
-          //   {name: "John biber", fbId: '2323', photo: pic},
-          //   {name: "Brook Taylor", fbId: '2323', photo: pic},
-          //   {name: "joshua hill", fbId: '2323', photo: pic}
-          // ]
           $('.searching').show();
           params.push({
             name: user.name,
