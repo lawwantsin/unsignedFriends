@@ -47,11 +47,13 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '{your-app-id}',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
+    appId      : '615594845230579',
     xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.1' // use version 2.1
+    version    : 'v2.1', // use version 2.1
+    status: true,
+    cookie: true,
+    xfbml: true,
+    channelUrl : '//unsigned-ballots.herokuapp.com/channel.html'
   });
 
   // Now that we've initialized the JavaScript SDK, we call 
