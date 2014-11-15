@@ -17,8 +17,6 @@
 
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
@@ -86,21 +84,16 @@
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+        'Thanks for logging in, ' + response.name + '.  Loading names.';
     });
-    FB.api(
-    "/me/taggable_friends",
+    FB.api("/me/taggable_friends",
     function (response) {
       if (response && !response.error) {
         var params = $.map(response.data, function(x) {
-          console.log(x);
           return {
             name: x.name,
-            fbId: x.id,
             photo: x.picture.data.url
           }
         });
@@ -128,7 +121,6 @@
   }
 
   make_list = function(res) {
-    console.log(res)
     $('.searching').hide();    
     if (res.length > 0) {
       $('.matched-list').append(res);
