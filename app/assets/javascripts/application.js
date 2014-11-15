@@ -124,7 +124,7 @@
 
   make_list = function(res) {
     $('.searching').hide();    
-    if (true) {
+    if (false) {
       $('.matched-list').append(res);
       $('.found-some').show();
     }
