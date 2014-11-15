@@ -116,7 +116,7 @@
           );
         }
         else {
-          alert("Couldn't find any friends via facebook.  Did you accept all the permissions?")
+          alert("Facebook hasn't approved our use of user's friends lists.  So until that happens, we're SOL.")
         }
       });
     });
@@ -124,7 +124,7 @@
 
   make_list = function(res) {
     $('.searching').hide();    
-    if (false) {
+    if (res.length > 0) {
       $('.matched-list').append(res);
       $('.found-some').show();
     }
