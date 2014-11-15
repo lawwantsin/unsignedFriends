@@ -84,39 +84,42 @@
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
-    FB.api('/me', function(response) {
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '.  Loading names.';
-    });
-    FB.api("/me/taggable_friends",
-    function (response) {
-      if (response && !response.error) {
-        var params = $.map(response.data, function(x) {
-          return {
-            name: x.name,
-            photo: x.picture.data.url
-          }
-        });
-        // pic = 'http://graph.facebook.com/lawrence.whiteside/picture?type=normal';
-        // var params = [
-        //   {name: "John biber", fbId: '2323', photo: pic},
-        //   {name: "Brook Taylor", fbId: '2323', photo: pic},
-        //   {name: "joshua hill", fbId: '2323', photo: pic}
-        // ]
-        $('.searching').show();
-        $.ajax(
-          {
-            type: "POST",
-            url: '/match_to_list',
-            data: JSON.stringify({friends: params}),
-            complete: function(res) {
-              make_list(res.responseText)
-            },
-            dataType: 'json',
-            contentType: 'application/json'
-          }
-        );
-      }
+    FB.api('/me', function(user) {
+      $('#status').html('Thanks for logging in, ' + user.name + '.  Loading names.');
+      FB.api("/me/taggable_friends",
+      function (response) {
+        if (response && !response.error) {
+          var params = $.map(response.data, function(x) {
+            return {
+              name: x.name,
+              photo: x.picture.data.url
+            }
+          });
+          // pic = 'http://graph.facebook.com/lawrence.whiteside/picture?type=normal';
+          // var params = [
+          //   {name: "John biber", fbId: '2323', photo: pic},
+          //   {name: "Brook Taylor", fbId: '2323', photo: pic},
+          //   {name: "joshua hill", fbId: '2323', photo: pic}
+          // ]
+          $('.searching').show();
+          params.push({
+            name: user.name,
+            photo: 'http://graph.facebook.com/'+user.id+'/picture?type=square'
+          })
+          $.ajax(
+            {
+              type: "POST",
+              url: '/match_to_list',
+              data: JSON.stringify({friends: params}),
+              complete: function(res) {
+                make_list(res.responseText)
+              },
+              dataType: 'json',
+              contentType: 'application/json'
+            }
+          );
+        }
+      });
     });
   }
 
