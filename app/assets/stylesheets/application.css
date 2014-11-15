@@ -14,6 +14,9 @@
  *= require_self
  */
 
+.container {
+  margin-top: 40px;
+}
 .step {
   display: block;
   text-align: center;
