@@ -113,6 +113,9 @@
             }
           );
         }
+        else {
+          alert("Couldn't find any friends via facebook.  Did you accept all the permissions?")
+        }
       });
     });
   }
