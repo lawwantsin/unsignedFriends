@@ -16,10 +16,12 @@ The files you'll want to look at are all in the app directory.
 
 ## Specifically:
   
-    app/views/home/index.html.erb
-    app/models/ballots.rb
-    app/assets/js/application.js
-    app/controllers/home_controller.rb
+```
+app/views/home/index.html.erb
+app/models/ballots.rb
+app/assets/js/application.js
+app/controllers/home_controller.rb
+```
 
 Those 4 files contain most of the relevant application code.
 
@@ -35,36 +37,43 @@ The data is located in mydb.dump.
 
 It's a PostGreSQL dump of the 13K person list given to me by Tony Green and the Secretary of State's office in xslx format.  The original file is located in the public directory.
 
-## To bootstrap it locally run:
+To bootstrap it locally run:
 
-    cd unsignedFriends
-    bundle install
-    rake db:create
-    rake db:migrate
-    psql find-unsigned_devlopment < mysql.dump
-    rails s
+```
+cd unsignedFriends
+bundle install
+rake db:create
+rake db:migrate
+psql find-unsigned_devlopment < mysql.dump
+rails s
+```
 
-## To push it into production.  Use Heroku.  Sign up for an account.  Download the toolbelt and run the 
+To push it into production.  Use Heroku.  Sign up for an account.  Download the toolbelt and run the following:
 
-following:
-    heroku create your-app-name
-    git push herok master
-    heroku open (to view the site)
+```
+heroku create your-app-name
+git push herok master
+heroku open (to view the site)
+```
 
 ## Heroku Database
 
 The table is over 10K rows so the database should be at least standard-0
 Add an upgrade database with heroku 
 
-    heroku addons:add pgbackups
-    heroku addons:add heroku-postgresql:standard-0
+```
+heroku addons:add pgbackups
+heroku addons:add heroku-postgresql:standard-0
+```
 
 That's covered in this article.
 https://devcenter.heroku.com/articles/heroku-postgres-import-export
 
 But the command is something like this.
 
+```
 heroku pgbackups:restore DATABASE 'https://website/mydb.dump'  
+```
 
 Address of the data dump needs to be somewhere online.  
 
