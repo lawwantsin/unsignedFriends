@@ -43,6 +43,9 @@
 .row {
   margin-bottom: 40px;
 }
-.none-found, .found-some {
+.searching, .found-none, .found-some {
   display: none;
+}
+.img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+  width: 100%;
 }

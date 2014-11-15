@@ -97,25 +97,27 @@
     function (response) {
       if (response && !response.error) {
         var params = $.map(response.data, function(x) {
+          console.log(x);
           return {
             name: x.name,
             fbId: x.id,
-            photo: x.picture.url
+            photo: x.picture.data.url
           }
         });
-        pic = 'http://graph.facebook.com/lawrence.whiteside/picture?size=medium';
-        var params = [
-          {name: "John biber", fbId: '2323', photo: pic},
-          {name: "Brook Taylor", fbId: '2323', photo: pic},
-          {name: "joshua hill", fbId: '2323', photo: pic}
-        ]
+        // pic = 'http://graph.facebook.com/lawrence.whiteside/picture?type=normal';
+        // var params = [
+        //   {name: "John biber", fbId: '2323', photo: pic},
+        //   {name: "Brook Taylor", fbId: '2323', photo: pic},
+        //   {name: "joshua hill", fbId: '2323', photo: pic}
+        // ]
+        $('.searching').show();
         $.ajax(
           {
             type: "POST",
             url: '/match_to_list',
             data: JSON.stringify({friends: params}),
-            success: function(res) {
-              make_list(res)
+            complete: function(res) {
+              make_list(res.responseText)
             },
             dataType: 'json',
             contentType: 'application/json'
@@ -126,11 +128,10 @@
   }
 
   make_list = function(res) {
+    console.log(res)
+    $('.searching').hide();    
     if (res.length > 0) {
-      $.each(res, function(i,fr) {
-        var friend = '<li><p>Name: '+fr.name+'<br/><img src="'+fr.photo+'"/><br>Reason: '+fr.reason+'</p></li>'
-        $('.matched-list').append(friend);
-      });
+      $('.matched-list').append(res);
       $('.found-some').show();
     }
     else {

@@ -8,14 +8,14 @@ class HomeController < ApplicationController
       match = Ballot.find_friend(f['name'])
       if match
         matches << {
-          name: f['name'],
+          name: f['name'].titleize,
           photo: f['photo'],
-          county: match.county,
+          county: match.county.titleize,
           city: match.city_state_zip,
-          reason: match.unaccepted_reason
+          reason: match.unaccepted_reason.titleize
         }
       end
     end
-    render :json => matches.to_json
+    render :partial => 'home/friendbox', :collection => matches
   end
 end
