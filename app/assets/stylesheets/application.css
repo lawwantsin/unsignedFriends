@@ -65,3 +65,9 @@
 .matched-list .row {
   margin-bottom: 0;
 }
+.searching {
+  background-color: yellow;
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
