@@ -1,28 +1,59 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+= Find Friends Unsigned Ballots App
 
-Things you may want to cover:
+My name is Lawrence Whiteside and I created this app today to help the people of Oregon win their right to know.  Use it to search your facebook friends against the current Contested Ballots List from the Secretary of State's office.
 
-* Ruby version
+This is the code to the simple Rails, Jquery based app.
 
-* System dependencies
+Licensed under the MIT license.  Free to use and modify.
 
-* Configuration
+Downoad the source from this repo or fork it for yourself.
 
-* Database creation
+VERIFICATION
 
-* Database initialization
+If you're here to verify this code does what it says it does.
 
-* How to run the test suite
+The files you'll want to look at are all in the app directory.
 
-* Services (job queues, cache servers, search engines, etc.)
+Specifically:
+app/views/home/index.html.erb
+app/models/ballots.rb
+app/assets/js/application.js
+app/controllers/home_controller.rb
 
-* Deployment instructions
+Those 4 files contain most of the relevant application code.
 
-* ...
+INSTALLATION
 
+It's a Rails 4 app so it'll need Ruby 2.1.4.
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+It uses PostgreSQL as it's database.
+
+It uses git, so install that too.
+
+The data is located in mydb.dump.
+
+It's a PostGreSQL dump of the 13K person list given to me by Tony Green and the Secretary of State's office.
+
+To bootstrap it locally run:
+cd unsignedFriends
+bundle install
+rake db:create
+rake db:migrate
+psql find-unsigned_devlopment < mysql.dump
+rails s <= to start the server
+
+To push it into production.  Use Heroku.  Sign up for an account.  Download the toolbelt and run the following:
+heroku create your-app-name
+git push herok master
+heroku open (to view the site)
+It still needs the data in the Heroku database.
+That's covered in this article.
+https://devcenter.heroku.com/articles/heroku-postgres-import-export
+
+But the command is something like this.
+heroku pgbackups:restore DATABASE 'https://somewhereonline.com/mydb.dump'  <= Address of the Data dump somewhere online.
+
+Thanks for reading.
+- Lawrence Whiteside
