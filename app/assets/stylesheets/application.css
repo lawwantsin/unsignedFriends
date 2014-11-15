@@ -30,7 +30,6 @@
   margin: 0 auto;
 }
 .login {
-  background-color: #ddd;
   padding: 30px;
   position: relative;
 }
@@ -38,6 +37,10 @@
   position: relative;
   margin: 0 auto;
   width: 100px;
+}
+.grey-bg {
+  background-color: #ddd;
+  padding: 10px;
 }
 .friends {
   width: 100%;
@@ -59,6 +62,9 @@
 .panel {
   margin-bottom: 0;
 }
+.matched-list {
+  display: none;
+}
 .matched-list .panel {
   margin-bottom: 20px;
   border-radius: 0px;
@@ -71,4 +77,13 @@
   padding: 10px;
   margin: 20px 0;
   border-radius: 10px;
+}
+.login-status {
+  padding-top: 20px;
+  display: none;
+}
+.right-corner {
+  position: absolute;
+  top: 0px;
+  right: 15px;
 }

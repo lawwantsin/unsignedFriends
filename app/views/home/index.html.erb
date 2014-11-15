@@ -2,14 +2,14 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h2>
-        <img src="<%= asset_path('pic.jpg') %>" style="width: 100px"/>
+        <img src="<%= asset_path('ad.jpg') %>" style="width: 100px"/>
         Oregon.  Find Friends Who Didn't Complete Their 2014 Ballot
       </h2>
     </div>
     <div class="panel-heading">
       <p>This is an app that searches your friend's names against the current Unsigned Ballot List in Oregon.</p>
       <p>None of your information will be shared in any way with any party.</p>
-      <p>This app is not endorsed by any group.  I used the Right to Know logo, cause I thought they wouldn't mind :)</p>
+      <p>This app is not endorsed by any group.  Nor is the search bias towards any outcome.</p>
     </div>
     <div class="panel-body">
       <div class="row">
@@ -21,10 +21,19 @@
             <p>The login in and authorization is handled through Facebook.</p>
         </div>
         <div class="col-sm-4">
-          <div class="login">
+          <div class="login grey-bg">
             <div class="login2">
               <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
-              </fb:login-button>        
+              </fb:login-button>
+            </div>
+            <div class="login-status">
+              <p>
+                Thanks for loggin in.
+                <span class="name"></span>
+              </p>
+              <p>
+                Grabbing friend names...
+              </p>
             </div>
           </div>  
         </div>
@@ -33,36 +42,40 @@
         <div class="col-sm-2">
           <span class="step">2</span>
         </div>
-        <div class="col-sm-10">    
-          <div class="friends">
-            <p>
+        <div class="col-sm-6">    
+          <div class="friends clearfix">
+            <p class="pull-left">
               Login to Cross Reference the names with this list
-              <a href="/Statewide%20Challenged%20Ballots_as%20of_11_12_14%20230pm.xlsx">
-                <img src="<%= asset_path('xl.png') %>" class="xl-logo" />
-              </a>
+              <br>
+              Or download the list as a spreadsheet.
             </p>
-            <div id="status"></div>  
-            <p class="searching">Searching the Unsigned Ballot List now... May take a minute.</p>
-            <div class="found-none">
-              <h2>Good stuff!  We didn't find any matches amongst your friends.</h2>
-              <p>Please Share this app so your friends can search their friends too.</p>          
-            </div>
-            <div  class="found-some">
-              <h2>
-                We found some matches! 
-              </h2>
+            <a class="pull-right" href="/Statewide%20Challenged%20Ballots_as%20of_11_12_14%20230pm.xlsx">
+              <img src="<%= asset_path('xl.png') %>" class="xl-logo" />
+            </a>
+          </div>
+        </div>      
+        <div class="col-sm-4">    
+            <p class="searching">Searching the Unsigned Ballot List now... 
+              <br>
+              May take a minute.</p>
+            <div class="found-none grey-bg">
+              <h3>We didn't find any matches amongst your friends.  Nice!</h2>
+              <p>Please Share this app so your friends can search their friends too.</p>
+            </div>         
+            <div  class="found-some grey-bg">
+              <h3>
+                Hmm, we found some matches. 
+              </h3>
               <p>
                 Look em over.  If they are Oregon voters, please message them.
               </p>
               <p>The deadline of November 18th, 2014 at 5pm is <%= ((DateTime.now - DateTime.new(2014, 11, 18, 17, 0, 0)).abs * 24).to_i %> hours away!  And No is still winning by less than half a percent.</p>          
               <p>Help your friends get counted.</p>          
-              <div class="row matched-list">
-              
-              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="row matched-list grey-bg"></div>
       <div class="row">
         <div class="col-sm-2">
           <span class="step">3</span>

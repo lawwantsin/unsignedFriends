@@ -6,8 +6,9 @@
       </a>
       <div class="media-body">
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-12" style="position: relative">
             <h1 class="media-heading"><%= friendbox[:name] %></h1>
+            <a href="https://www.facebook.com/search/str/<%= friendbox[:name] %>/users-named/109564342404151/residents-near/present/intersect" class="btn btn-primary right-corner" role="button" target="_blank">Message Them</a>
           </div>
           <div class="col-xs-12">
               <span>If they live in this County, City, State, they are probably a match.</span>        
@@ -23,7 +24,6 @@
           <div class="col-xs-4">
             <h4>Official Reason for Rejection</h4>
             <p><%= friendbox[:reason] %></p>
-            <p><a href="https://www.facebook.com/search/str/<%= friendbox[:name] %>/users-named/109564342404151/residents-near/present/intersect" class="btn btn-primary" role="button" target="_blank">Message Them</a></p>    
           </div>
         </div>
       </div>

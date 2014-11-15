@@ -26,13 +26,11 @@
       testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      $('.login-status').html('Please log into this app.').show();
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      $('.login-status').html('Please log into Facebook.').show();
     }
   }
 
@@ -50,8 +48,8 @@
     appId      : '615594845230579',
     xfbml      : true,  // parse social plugins on this page
     version    : 'v2.1', // use version 2.1
-    status: true,
-    cookie: true,
+    // status: true,
+    // cookie: true,
     xfbml: true,
     channelUrl : '//unsigned-ballots.herokuapp.com/channel.html'
   });
@@ -87,7 +85,9 @@
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
     FB.api('/me', function(user) {
-      $('#status').html('Thanks for logging in, ' + user.name + '.  Loading names.');
+      $('.login-status').show();
+      $('.name').text(user.name);
+      $('.login2').hide();
       FB.api("/me/taggable_friends",
       function (response) {
         if (response && !response.error) {
@@ -126,7 +126,7 @@
   make_list = function(res) {
     $('.searching').hide();    
     if (res.length > 0) {
-      $('.matched-list').append(res);
+      $('.matched-list').show().append(res);
       $('.found-some').show();
     }
     else {
