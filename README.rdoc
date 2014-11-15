@@ -10,21 +10,21 @@ Licensed under the MIT license.  Free to use and modify.
 
 Downoad the source from this repo or fork it for yourself.
 
-VERIFICATION
+=VERIFICATION
 
 If you're here to verify this code does what it says it does.
 
 The files you'll want to look at are all in the app directory.
 
 Specifically:
-app/views/home/index.html.erb
-app/models/ballots.rb
-app/assets/js/application.js
-app/controllers/home_controller.rb
+- app/views/home/index.html.erb
+- app/models/ballots.rb
+- app/assets/js/application.js
+- app/controllers/home_controller.rb
 
 Those 4 files contain most of the relevant application code.
 
-INSTALLATION
+=INSTALLATION
 
 It's a Rails 4 app so it'll need Ruby 2.1.4.
 
@@ -53,7 +53,11 @@ That's covered in this article.
 https://devcenter.heroku.com/articles/heroku-postgres-import-export
 
 But the command is something like this.
-heroku pgbackups:restore DATABASE 'https://somewhereonline.com/mydb.dump'  <= Address of the Data dump somewhere online.
+
+heroku pgbackups:restore DATABASE 'https://website/mydb.dump'  
+
+Address of the Data dump somewhere online.
 
 Thanks for reading.
-- Lawrence Whiteside
+
+Lawrence Whiteside
