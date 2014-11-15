@@ -2,13 +2,17 @@
 
 = Find Friends Unsigned Ballots App
 
-My name is Lawrence Whiteside and I created this app today to help the people of Oregon win their right to know.  Use it to search your facebook friends against the current Contested Ballots List from the Secretary of State's office.
+My name is Lawrence Whiteside and I created this app today to help the people of Oregon win their right to know if there food comes from pesticide heavy farming practices, otherwise known as GMOS.
+
+Use it to search your facebook friends against the current Contested Ballots List from the Secretary of State's office.
 
 This is the code to the simple Rails, Jquery based app.
 
 Licensed under the MIT license.  Free to use and modify.
 
 Downoad the source from this repo or fork it for yourself.
+
+
 
 == VERIFICATION
 
@@ -37,8 +41,9 @@ The data is located in mydb.dump.
 
 It's a PostGreSQL dump of the 13K person list given to me by Tony Green and the Secretary of State's office in xslx format.  The original file is located in the public directory.
 
-To bootstrap it locally run:
+== To Setup Locally
 
+    git clone https://github.com/lawwantsin/unsignedFriends.git
     cd unsignedFriends
     bundle install
     rake db:create
@@ -46,16 +51,19 @@ To bootstrap it locally run:
     psql find-unsigned_devlopment < mysql.dump
     rails s
 
-To push it into production.  Use Heroku.  Sign up for an account.  Download the toolbelt and run the following:
+== In Production  
+
+Use Heroku.  Sign up for an account.  Download the toolbelt and run the following:
 
     heroku create your-app-name
-    git push herok master
+    git push heroku master
     heroku open (to view the site)
 
 
 == Heroku Database
 
 The table is over 10K rows so the database should be at least standard-0
+
 Add an upgrade database with heroku 
 
     heroku addons:add pgbackups
