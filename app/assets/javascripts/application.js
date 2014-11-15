@@ -116,7 +116,8 @@
           );
         }
         else {
-          alert("Facebook hasn't approved our use of user's friends lists.  So until that happens, we're SOL.")
+          // alert("Facebook hasn't approved our use of user's friends lists.  So until that happens, we're SOL.")
+          make_list({length: 0});
         }
       });
     });
